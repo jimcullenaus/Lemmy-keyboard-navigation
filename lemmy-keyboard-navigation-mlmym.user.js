@@ -311,7 +311,10 @@ console.log(`modalMode: ${modalMode}`);
 
 // Stop arrows from moving the page if arrow key scrolling is disabled
 window.addEventListener("keydown", function(e) {
-  if (["ArrowUp", "ArrowDown"].indexOf(e.code) > -1 && !enableArrowKeyScrolling) {
+  if (!enableArrowKeyScrolling
+    && ["ArrowUp", "ArrowDown"].indexOf(e.code) > -1
+    && ["TEXTAREA", "INPUT"].indexOf(e.target.tagName) === -1
+  ) {
     e.preventDefault();
   }
 }, false);
