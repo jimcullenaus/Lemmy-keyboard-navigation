@@ -3,7 +3,7 @@
 // @match         https://*/*
 // @include       https://*/*
 // @grant         none
-// @version       2.6
+// @version       2.10
 // @author        vmavromatis
 // @author        InfinibyteF4
 // @author        aglidden
@@ -59,36 +59,36 @@ function options(open) {
         scrollPosition: "middle",
         expandOption: "both",
         backgroundRGBA: "rgba(141, 141, 141, 0.1)",
-        kb_prevPage: "KeyH",
-        kb_nextPage: "KeyL",
-        kb_prevKey: "KeyK",
-        kb_nextKey: "KeyJ",
-        kb_expand: "KeyX",
-        kb_comments: "KeyC",
+        kb_prevPage: "h",
+        kb_nextPage: "l",
+        kb_prevKey: "k",
+        kb_nextKey: "j",
+        kb_expand: "x",
+        kb_comments: "c",
         kb_openLink: "Enter",
-        kb_parent: "KeyP",
-        kb_upvote: "KeyA",
-        kb_downvote: "KeyZ",
-        kb_replyComm: "KeyR",
-        kb_save: "KeyS",
-        kb_context: "KeyQ",
-        kb_smallerImg: "Minus",
-        kb_largerImg: "Equal",
-        kb_user: "KeyU",
-        kb_edit: "KeyE",
-        kb_top: "KeyT",
-        m_dialog: "KeyG",
-        m_first: "Digit1",
-        m_second: "Digit2",
-        m_third: "Digit3",
-        m_fourth: "Digit4",
-        m_fifth: "Digit5",
-        m_frontpage: "KeyF",
-        m_saved: "KeyS",
-        m_userpage: "KeyU",
-        m_inbox: "KeyI",
-        m_options: "KeyO",
-        s_search: "Period"
+        kb_parent: "p",
+        kb_upvote: "a",
+        kb_downvote: "z",
+        kb_replyComm: "r",
+        kb_save: "s",
+        kb_context: "q",
+        kb_smallerImg: "-",
+        kb_largerImg: "=",
+        kb_user: "u",
+        kb_edit: "e",
+        kb_top: "t",
+        m_dialog: "g",
+        m_first: "1",
+        m_second: "2",
+        m_third: "3",
+        m_fourth: "4",
+        m_fifth: "5",
+        m_frontpage: "f",
+        m_saved: "s",
+        m_userpage: "u",
+        m_inbox: "i",
+        m_options: "o",
+        s_search: "."
       },
       getSettingsFromLocalStorage()
     );
@@ -222,7 +222,7 @@ function options(open) {
       document.getElementById("option_m_inbox").value;
 
     if (document.getElementById("option_m_options").value === "") {
-      userOptions.m_options = "KeyO"; //if left blank, reset to default
+      userOptions.m_options = "o"; //if left blank, reset to default
     } else {
       userOptions.m_options = document.getElementById("option_m_options").value;
     }
@@ -280,16 +280,16 @@ const biggerImgKey = `${settings.kb_largerImg}`;
 const userKey = `${settings.kb_user}`;
 const editKey = `${settings.kb_edit}`;
 const topKey = `${settings.kb_top}`;
-const linkOneKey = 'Digit1';
-const linkTwoKey = 'Digit2';
-const linkThreeKey = 'Digit3';
-const linkFourKey = 'Digit4';
-const linkFiveKey = 'Digit5';
-const linkSixKey = 'Digit6';
-const linkSevenKey = 'Digit7';
-const linkEightKey = 'Digit8';
-const linkNineKey = 'Digit9';
-const linkZeroKey = 'Digit0';
+const linkOneKey = '1';
+const linkTwoKey = '2';
+const linkThreeKey = '3';
+const linkFourKey = '4';
+const linkFiveKey = '5';
+const linkSixKey = '6';
+const linkSevenKey = '7';
+const linkEightKey = '8';
+const linkNineKey = '9';
+const linkZeroKey = '0';
 
 const modalPopupKey = `${settings.m_dialog}`;
 const modalSortOneKey = `${settings.m_first}`;
@@ -311,7 +311,7 @@ console.log(`modalMode: ${modalMode}`);
 
 // Stop arrows from moving the page if arrow key scrolling is disabled
 window.addEventListener("keydown", function(e) {
-  if (["ArrowUp", "ArrowDown"].indexOf(e.code) > -1 && !enableArrowKeyScrolling) {
+  if (["ArrowUp", "ArrowDown"].indexOf(e.key) > -1 && !enableArrowKeyScrolling) {
     e.preventDefault();
   }
 }, false);
@@ -437,31 +437,31 @@ odiv.innerHTML = `
         <td><textarea id='option_backgroundRGBA'>${settings.backgroundRGBA}</textarea></td>
       </tr>
       <tr>
-          <td><h3><b>Rebind Keys</b></h3>Set keybinds with keycodes here:<br/><a href='https://www.toptal.com/developers/keycode'>https://www.toptal.com/developers/keycode</a></td><td><td/>
+          <td><h3><b>Rebind Keys</b></h3>Set keybinds with event.key values here:<br/><a href='https://www.toptal.com/developers/keycode'>https://www.toptal.com/developers/keycode</a></td><td><td/>
       </tr>
       <tr>
       <tr>
-        <td><b>Next Page Key</b><br/>Go to the next page.<br/>Default: KeyL</br></br></td>
+        <td><b>Next Page Key</b><br/>Go to the next page.<br/>Default: l</br></br></td>
         <td><textarea id='option_kb_nextPage'>${settings.kb_nextPage}</textarea></td>
       </tr>
       <tr>
-        <td><b>Previous Page Key</b><br/>Go to the previous page.<br/>Default: KeyH</br></br></td>
+        <td><b>Previous Page Key</b><br/>Go to the previous page.<br/>Default: h</br></br></td>
         <td><textarea id='option_kb_prevPage'>${settings.kb_prevPage}</textarea></td>
       </tr>
       <tr>
-        <td><b>Next Selection Key</b><br/>Go to the next post/comment.<br/>Default: KeyJ</br></br></td>
+        <td><b>Next Selection Key</b><br/>Go to the next post/comment.<br/>Default: j</br></br></td>
         <td><textarea id='option_kb_nextKey'>${settings.kb_nextKey}</textarea></td>
       </tr>
       <tr>
-        <td><b>Previous Selection Key</b><br/>Go to the previous post/comment.<br/>Default: KeyK</br></br></td>
+        <td><b>Previous Selection Key</b><br/>Go to the previous post/comment.<br/>Default: k</br></br></td>
         <td><textarea id='option_kb_prevKey'>${settings.kb_prevKey}</textarea></td>
       </tr>
       <tr>
-        <td><b>Expand/Collapse</b><br/>Expand/collapse both post and comment content.<br/>Default: KeyX</br></br></td>
+        <td><b>Expand/Collapse</b><br/>Expand/collapse both post and comment content.<br/>Default: x</br></br></td>
         <td><textarea id='option_kb_expand'>${settings.kb_expand}</textarea></td>
       </tr>
       <tr>
-        <td><b>Open Comments</b><br/>Go to the comments of a post.<br/>Default: KeyC</br></br></td>
+        <td><b>Open Comments</b><br/>Go to the comments of a post.<br/>Default: c</br></br></td>
         <td><textarea id='option_kb_comments'>${settings.kb_comments}</textarea></td>
       </tr>
       <tr>
@@ -469,107 +469,107 @@ odiv.innerHTML = `
         <td><textarea id='option_kb_openLink'>${settings.kb_openLink}</textarea></td>
       </tr>
       <tr>
-        <td><b>Go to Parent Comment</b><br/>Goes one level up the comment chain.<br/>Default: KeyP</br></br></td>
+        <td><b>Go to Parent Comment</b><br/>Goes one level up the comment chain.<br/>Default: p</br></br></td>
         <td><textarea id='option_kb_parent'>${settings.kb_parent}</textarea></td>
       </tr>
       <tr>
-        <td><b>Upvote</b><br/>:\)<br/>Default: KeyA</br></br></td>
+        <td><b>Upvote</b><br/>:\)<br/>Default: a</br></br></td>
         <td><textarea id='option_kb_upvote'>${settings.kb_upvote}</textarea></td>
       </tr>
       <tr>
-        <td><b>Downvote</b><br/>:\(<br/>Default: KeyZ</br></br></td>
+        <td><b>Downvote</b><br/>:\(<br/>Default: z</br></br></td>
         <td><textarea id='option_kb_downvote'>${settings.kb_downvote}</textarea></td>
       </tr>
       <tr>
-        <td><b>Reply/Go to community</b><br/>Posts: goes to the post's community<br/>Comments: replies to the selected comment<br/>Default: KeyR</br></br></td>
+        <td><b>Reply/Go to community</b><br/>Posts: goes to the post's community<br/>Comments: replies to the selected comment<br/>Default: r</br></br></td>
         <td><textarea id='option_kb_replyComm'>${settings.kb_replyComm}</textarea></td>
       </tr>
       <tr>
-        <td><b>Save post/comment</b><br/>Saves the selected post/comment.<br/>Default: KeyS</br></br></td>
+        <td><b>Save post/comment</b><br/>Saves the selected post/comment.<br/>Default: s</br></br></td>
         <td><textarea id='option_kb_save'>${settings.kb_save}</textarea></td>
       </tr>
       <tr>
-        <td><b>Get context of comment</b><br/>Goes to the context of the selected comment.<br/>Default: KeyQ</br></br></td>
+        <td><b>Get context of comment</b><br/>Goes to the context of the selected comment.<br/>Default: q</br></br></td>
         <td><textarea id='option_kb_context'>${settings.kb_context}</textarea></td>
       </tr>
       <tr>
-        <td><b>Shrink expanded image</b><br/>Make an expanded image smaller.<br/>Default: Minus</br></br></td>
+        <td><b>Shrink expanded image</b><br/>Make an expanded image smaller.<br/>Default: -</br></br></td>
         <td><textarea id='option_kb_smallerImg'>${settings.kb_smallerImg}</textarea></td>
       </tr>
       <tr>
-        <td><b>Grow expanded image</b><br/>Make an expanded image larger.<br/>Default: Equal</br></br></td>
+        <td><b>Grow expanded image</b><br/>Make an expanded image larger.<br/>Default: =</br></br></td>
         <td><textarea id='option_kb_largerImg'>${settings.kb_largerImg}</textarea></td>
       </tr>
       <tr>
-        <td><b>Go to poster's profile</b><br/>Go to the profile of whoever posted the selected post/comment.<br/>Default: KeyU</br></br></td>
+        <td><b>Go to poster's profile</b><br/>Go to the profile of whoever posted the selected post/comment.<br/>Default: u</br></br></td>
         <td><textarea id='option_kb_user'>${settings.kb_user}</textarea></td>
       </tr>
       <tr>
-        <td><b>Edit the selected post/comment</b><br/>It only works on your own posts!<br/>Default: KeyE</br></br></td>
+        <td><b>Edit the selected post/comment</b><br/>It only works on your own posts!<br/>Default: e</br></br></td>
         <td><textarea id='option_kb_edit'>${settings.kb_edit}</textarea></td>
       </tr>
       <tr>
-        <td><b>Scroll to top</b><br/>Scroll to the top of the page.<br/>Default: KeyT</br></br></td>
+        <td><b>Scroll to top</b><br/>Scroll to the top of the page.<br/>Default: t</br></br></td>
         <td><textarea id='option_kb_top'>${settings.kb_top}</textarea></td>
       </tr>
       <tr>
           <td><h3><b>Rebind Dialog Keys</b></h3></td><td><td/>
       </tr>
       <tr>
-        <td><b>Open/Close Dialog</b><br/>Default: KeyG</br></br></td>
+        <td><b>Open/Close Dialog</b><br/>Default: g</br></br></td>
         <td><textarea id='option_m_dialog'>${settings.m_dialog}</textarea></td>
       </tr>
       <tr>
       <tr>
-          <td><h4><b>Sort buttons</b></h4>For example: If you were to press G then 3 on the front page,<br/>it would sort by subscribed, but doing the same in a<br/>comment section would sort by new. The dialog<br/>text will change with what sort buttons are avaliable!</td><td><td/>
+          <td><h4><b>Sort buttons</b></h4>For example: If you were to press g then 3 on the front page,<br/>it would sort by subscribed, but doing the same in a<br/>comment section would sort by new. The dialog<br/>text will change with what sort buttons are avaliable!</td><td><td/>
       </tr>
-        <td><b>First Sort Button</b><br/>Default: Digit1</br></br></td>
+        <td><b>First Sort Button</b><br/>Default: 1</br></br></td>
         <td><textarea id='option_m_first'>${settings.m_first}</textarea></td>
       </tr>
       <tr>
-        <td><b>Second Sort Button</b><br/>Default: Digit2</br></br></td>
+        <td><b>Second Sort Button</b><br/>Default: 2</br></br></td>
         <td><textarea id='option_m_second'>${settings.m_second}</textarea></td>
       </tr>
       <tr>
-        <td><b>Third Sort Button</b><br/>Default: Digit3</br></br></td>
+        <td><b>Third Sort Button</b><br/>Default: 3</br></br></td>
         <td><textarea id='option_m_third'>${settings.m_third}</textarea></td>
       </tr>
       <tr>
-        <td><b>Fourth Sort Button</b><br/>Default: Digit4</br></br></td>
+        <td><b>Fourth Sort Button</b><br/>Default: 4</br></br></td>
         <td><textarea id='option_m_fourth'>${settings.m_fourth}</textarea></td>
       </tr>
       <tr>
-        <td><b>Fifth Sort Button</b><br/>Default: Digit5</br></br></td>
+        <td><b>Fifth Sort Button</b><br/>Default: 5</br></br></td>
         <td><textarea id='option_m_fifth'>${settings.m_fifth}</textarea></td>
       </tr>
       <tr>
           <td><h4><b>Go to page</b></h4></td><td><td/>
       </tr>
       <tr>
-        <td><b>Go to Frontpage</b><br/>Default: KeyF</br></br></td>
+        <td><b>Go to Frontpage</b><br/>Default: f</br></br></td>
         <td><textarea id='option_m_frontpage'>${settings.m_frontpage}</textarea></td>
       </tr>
       <tr>
-        <td><b>Go to Saved posts/comments</b><br/>Default: KeyS</br></br></td>
+        <td><b>Go to Saved posts/comments</b><br/>Default: s</br></br></td>
         <td><textarea id='option_m_saved'>${settings.m_saved}</textarea></td>
       </tr>
       <tr>
-        <td><b>Go to Current User's Profile</b><br/>Default: KeyU</br></br></td>
+        <td><b>Go to Current User's Profile</b><br/>Default: u</br></br></td>
         <td><textarea id='option_m_userpage'>${settings.m_userpage}</textarea></td>
       </tr>
       <tr>
-        <td><b>Go to Inbox</b><br/>Default: KeyI</br></br></td>
+        <td><b>Go to Inbox</b><br/>Default: i</br></br></td>
         <td><textarea id='option_m_inbox'>${settings.m_inbox}</textarea></td>
       </tr>
       <tr>
-        <td><b>Open options page</b><br/>Default: KeyO</br></br></td>
+        <td><b>Open options page</b><br/>Default: o</br></br></td>
         <td><textarea id='option_m_options'>${settings.m_options}</textarea></td>
       </tr>
       <tr>
           <td><h3><b>Rebind Searchbar Keys</b></h3></td><td><td/>
       </tr>
       <tr>
-        <td><b>Open search bar</b><br/>Default: Period</br></br></td>
+        <td><b>Open search bar</b><br/>Default: .</br></br></td>
         <td><textarea id='option_s_search'>${settings.s_search}</textarea></td>
       </tr>
       <tr>
@@ -766,13 +766,13 @@ function init() {
 }
 
 function handleKeyPress(event) {
-  if (["TEXTAREA", "INPUT"].indexOf(event.target.tagName) > -1 || event.metaKey) {
+  if (["TEXTAREA", "INPUT"].indexOf(event.target.tagName) > -1 || event.metaKey || event.ctrlKey) {
     return;
   }
 
   switch (modalMode) {
     case modalMode = 0:
-      switch (event.code) {
+      switch (event.key) {
         case nextKey:
         case prevKey:
           previousKey(event);
@@ -822,13 +822,10 @@ function handleKeyPress(event) {
           getContext(event);
           break;
         case replyCommKey:
-          // allow refresh with Ctrl + R
-          if (!event.ctrlKey) {
-            if (window.location.pathname.includes("/post/")) {
-              reply(event);
-            } else {
-              community(event);
-            }
+          if (window.location.pathname.includes("/post/")) {
+            reply(event);
+          } else {
+            community(event);
           }
           break;
         case userKey:
@@ -907,7 +904,7 @@ function handleKeyPress(event) {
       }
       break;
     case modalMode = 1:
-      switch (event.code) {
+      switch (event.key) {
         case escapeKey:
           modalMode = 0;
           console.log(`modalMode: ${modalMode}`);
@@ -979,7 +976,7 @@ function handleKeyPress(event) {
       }
       break;
     case modalMode = 2:
-      switch (event.code) {
+      switch (event.key) {
         case escapeKey:
           goToSearch("close");
           break;
@@ -1250,7 +1247,7 @@ function isExpandedComment() {
 function previousKey(event) {
   let selectedEntry;
   // Next button
-  if (event.code === nextKey) {
+  if (event.key === nextKey) {
     if (event.shiftKey && enableArrowKeyScrolling) {
       selectedEntry = getNextEntrySameLevel(currentEntry);
 
@@ -1265,7 +1262,7 @@ function previousKey(event) {
     }
   }
   // Previous button
-  if (event.code === prevKey) {
+  if (event.key === prevKey) {
     if (event.shiftKey && enableArrowKeyScrolling) {
       selectedEntry = getPrevEntrySameLevel(currentEntry);
 
@@ -1273,7 +1270,7 @@ function previousKey(event) {
       selectedEntry = getPrevEntry(currentEntry);
     }
   }
-  if (event.code === upvoteKey || event.code === downvoteKey) {
+  if (event.key === upvoteKey || event.key === downvoteKey) {
     if (autoNext) {
       selectedEntry = getNextEntry(currentEntry);
     }
@@ -1294,13 +1291,13 @@ function previousPageKey(event) {
 
   if (pageButtons && (document.getElementsByClassName('paginator').length > 0)) {
     if (majorversion <= 18) {
-      if (event.code === nextPageKey || event.code === nextKey) {
+      if (event.key === nextPageKey || event.key === nextKey) {
         document.querySelectorAll(".paginator>.btn.btn-secondary")[1].click(); //next
       } else {
         document.querySelectorAll(".paginator>.btn.btn-secondary")[0].click(); //prev
       }
     } else { // Lemmy 0.19 (no back button)
-      if (event.code === nextPageKey || event.code === nextKey) {
+      if (event.key === nextPageKey || event.key === nextKey) {
         document.querySelectorAll(".main-content-wrapper>div>.paginator>.btn.btn-secondary")[0].click(); //next
       } else {
         if (window.location != window.origin+window.location.pathname) {
@@ -1310,11 +1307,11 @@ function previousPageKey(event) {
     }
   }
   // Jump next block of comments
-  if (event.code === nextPageKey) {
+  if (event.key === nextPageKey) {
     commentBlock = getNextEntrySameLevel(currentEntry);
   }
   // Jump previous block of comments
-  if (event.code === prevPageKey) {
+  if (event.key === prevPageKey) {
     commentBlock = getPrevEntrySameLevel(currentEntry);
   }
   if (commentBlock) {
