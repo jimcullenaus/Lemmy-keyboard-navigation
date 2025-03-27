@@ -2,7 +2,7 @@
 // @name          mlmym-keyboard-navigation
 // @match         https://*/*
 // @grant         none
-// @version       2.6
+// @version       2.9
 // @author        vmavromatis
 // @author        howdy@thesimplecorner.org
 // @author        InfinibyteF4

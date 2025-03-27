@@ -3,7 +3,7 @@
 // @match         https://*/*
 // @include       https://*/*
 // @grant         none
-// @version       2.6
+// @version       2.9
 // @author        vmavromatis
 // @author        InfinibyteF4
 // @author        aglidden

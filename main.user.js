@@ -2,7 +2,7 @@
 // @name          lemmy-keyboard-navigation
 // @match         https://*/*
 // @grant         none
-// @version       2.8
+// @version       2.9
 // @author        vmavromatis
 // @author        InfinibyteF4
 // @author        aglidden
