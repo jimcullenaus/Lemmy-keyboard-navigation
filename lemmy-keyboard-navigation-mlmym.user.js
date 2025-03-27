@@ -1150,7 +1150,7 @@ function previousKey(event) {
     toggleExpand();
   }
   // Next button
-  if (event.code === nextKey) {
+  if (event.key === nextKey) {
     if (event.shiftKey && enableArrowKeyScrolling) {
       selectedEntry = getNextEntrySameLevel(currentEntry);
 
@@ -1165,7 +1165,7 @@ function previousKey(event) {
     }
   }
   // Previous button
-  if (event.code === prevKey) {
+  if (event.key === prevKey) {
     if (event.shiftKey && enableArrowKeyScrolling) {
       selectedEntry = getPrevEntrySameLevel(currentEntry);
 
@@ -1173,7 +1173,7 @@ function previousKey(event) {
       selectedEntry = getPrevEntry(currentEntry);
     }
   }
-  if (event.code === upvoteKey || event.code === downvoteKey) {
+  if (event.key === upvoteKey || event.key === downvoteKey) {
     if (autoNext) {
       selectedEntry = getNextEntry(currentEntry);
     }
@@ -1200,18 +1200,18 @@ function previousPageKey(event) {
     if (document.querySelectorAll(".pager")[0].children.length === 1) {
       document.querySelectorAll(".pager")[0].children[0].click();
     }
-    if (event.code === nextPageKey || event.code === nextKey) {
+    if (event.key === nextPageKey || event.key === nextKey) {
       document.querySelectorAll(".pager")[0].children[1].click(); //next
     } else {
       document.querySelectorAll(".pager")[0].children[0].click(); //prev
     }
   }
   // Jump next block of comments
-  if (event.code === nextPageKey) {
+  if (event.key === nextPageKey) {
     commentBlock = getNextEntrySameLevel(currentEntry);
   }
   // Jump previous block of comments
-  if (event.code === prevPageKey) {
+  if (event.key === prevPageKey) {
     commentBlock = getPrevEntrySameLevel(currentEntry);
   }
   if (commentBlock) {
